@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — El Gran Emporio de la Chapa</title>
+<title>Aislantes Térmicos para Techos: ¿Cuál Es el Mejor para Tu Vivienda? — El Gran Emporio de la Chapa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -398,42 +398,71 @@
     .hero-dots{bottom:22px;}
   }
 
-  /* ---------- Blog ---------- */
-  .blog-banner{
-    position:relative; background:var(--navy); overflow:hidden; padding:64px 0 56px; text-align:center;
+  /* ---------- Blog article ---------- */
+  .article-banner{
+    position:relative; background:var(--navy); overflow:hidden; padding:90px 0 54px;
+    background-size:cover; background-position:center;
   }
-  .blog-banner::before{
+  .article-banner::before{
     content:""; position:absolute; inset:0; z-index:0;
-    background:radial-gradient(circle at 80% 20%, #1d4fb0 0%, var(--navy) 55%), linear-gradient(120deg,var(--navy),var(--navy-2));
+    background:linear-gradient(180deg, rgba(13,20,33,.88) 0%, rgba(13,20,33,.72) 45%, rgba(13,20,33,.94) 100%);
   }
-  .blog-banner .container{position:relative; z-index:1;}
-  .blog-banner .eyebrow{color:var(--gold);}
-  .blog-banner h1{color:var(--white); font-size:clamp(2rem,4vw,2.8rem); margin-bottom:14px;}
-  .blog-banner p{color:rgba(255,255,255,.78); max-width:560px; margin:0 auto; font-size:1rem;}
-  .blog-list{padding:70px 0 90px; background:var(--gray-bg);}
-  .blog-grid{display:flex; flex-direction:column; gap:26px; max-width:820px; margin:0 auto;}
-  .blog-card{
-    background:var(--white); border-radius:var(--radius); border:1px solid #eceef1; box-shadow:var(--shadow);
-    padding:32px 34px; transition:transform .25s ease, box-shadow .25s ease;
+  .article-banner .container{position:relative; z-index:1; max-width:820px;}
+  .article-back{
+    display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.75); font-size:.86rem;
+    font-weight:600; margin-bottom:22px;
   }
-  .blog-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-lg);}
-  .blog-card .tag{
+  .article-back:hover{color:#fff;}
+  .article-banner .tag{
     display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-    color:var(--red); background:rgba(187,50,41,.08); border-radius:999px; padding:5px 14px; margin-bottom:14px;
+    color:var(--navy); background:var(--gold); border-radius:999px; padding:6px 16px; margin-bottom:18px;
   }
-  .blog-card h2{color:var(--navy); font-size:1.35rem; margin-bottom:12px; line-height:1.3;}
-  .blog-card p{color:#4a4f57; font-size:.96rem; margin-bottom:18px;}
-  .blog-card .blog-meta{
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  .article-banner h1{color:var(--white); font-size:clamp(1.7rem,3.6vw,2.5rem); margin-bottom:16px; line-height:1.25;}
+  .article-banner .article-date{color:rgba(255,255,255,.65); font-size:.88rem;}
+  .article-wrap{padding:60px 0 90px; background:var(--white);}
+  .article-body{max-width:760px; margin:0 auto; color:#3d4149; font-size:1rem;}
+  .article-body p{margin-bottom:20px; line-height:1.75;}
+  .article-body h2{color:var(--navy); font-size:1.5rem; margin:44px 0 18px;}
+  .article-body h3{color:var(--red); font-size:1.15rem; margin:32px 0 14px;}
+  .article-body h4{color:var(--navy); font-size:1rem; margin:26px 0 10px;}
+  .article-body strong{color:var(--navy);}
+  .article-body ul, .article-body ol{margin:0 0 22px 0; padding-left:0; list-style:none;}
+  .article-body ul li, .article-body ol li{
+    position:relative; padding-left:30px; margin-bottom:12px; line-height:1.6;
   }
-  .blog-card .blog-date{font-size:.82rem; color:#8a8f99;}
-  .blog-card .blog-link{
-    color:var(--red); font-weight:700; font-size:.92rem; display:inline-flex; align-items:center; gap:6px;
+  .article-body ul li::before{
+    content:""; position:absolute; left:0; top:9px; width:8px; height:8px; border-radius:50%; background:var(--red);
   }
-  .blog-card .blog-link:hover{color:var(--red-dark);}
+  .article-body ol{counter-reset:art-counter;}
+  .article-body ol li{counter-increment:art-counter;}
+  .article-body ol li::before{
+    content:counter(art-counter); position:absolute; left:0; top:0; width:22px; height:22px; border-radius:50%;
+    background:var(--navy); color:#fff; font-size:.72rem; font-weight:700; display:flex; align-items:center;
+    justify-content:center;
+  }
+  .article-tip{
+    background:var(--gray-bg); border-left:4px solid var(--gold); border-radius:0 var(--radius) var(--radius) 0;
+    padding:22px 26px; margin:28px 0; font-size:.96rem;
+  }
+  .article-tip strong{display:block; color:var(--navy); margin-bottom:6px; font-size:.8rem; letter-spacing:.05em; text-transform:uppercase;}
+  .article-table-wrap{overflow-x:auto; margin:24px 0 28px;}
+  .article-body table{width:100%; border-collapse:collapse; font-size:.9rem; min-width:480px;}
+  .article-body th{
+    background:var(--navy); color:#fff; text-align:left; padding:12px 14px; font-weight:600; font-size:.82rem;
+  }
+  .article-body td{padding:12px 14px; border-bottom:1px solid #eceef1;}
+  .article-body tr:nth-child(even) td{background:var(--gray-bg);}
+  .article-cta{
+    margin-top:48px; background:var(--navy-2); border-radius:var(--radius); padding:34px 36px; text-align:center;
+  }
+  .article-cta h3{color:#fff; font-size:1.2rem; margin-bottom:10px;}
+  .article-cta p{color:rgba(255,255,255,.78); margin-bottom:20px; font-size:.94rem;}
+  .article-cta .row-btns{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .article-source{margin-top:22px; font-size:.82rem; color:#8a8f99; font-style:italic;}
   @media (max-width:600px){
-    .blog-card{padding:26px 22px;}
-    .blog-banner{padding:48px 0 40px;}
+    .article-banner{padding:70px 0 40px;}
+    .article-wrap{padding:44px 0 60px;}
+    .article-cta{padding:28px 22px;}
   }
 </style>
 
@@ -479,46 +508,74 @@
     </div>
   </header>
 
-  <!-- Blog banner -->
-  <section class="blog-banner">
+  <!-- Article banner -->
+  <section class="article-banner" style="background-image:url(data:image/webp;base64,UklGRiwwAABXRUJQVlA4ICAwAACQdQGdASqEA1gCPpVKnUylp7moI7PZKzASiWlulvVcv/POc/56cxn1s9uFPta/ay6nvNU0zNopv4r95Fit47drn056IVr/mIyv8h/p/2/2DOUce5ot915vdl70m/lz9//fh6OH9l9E3nVevzHs75v91+f/5t/r/un50+5D+9vaYt/0u8D/k843146DPFL49mSMon9po6s9/590T3Z9eseEVfnJecGS81m3z3sVX//WGZ8HjIbhdJnBkvODJecGm1l4+i/t/Qsi3U+vB7qfKK3t+vlfuSTWIUtF75kG77eZtACJgjsaQ//+bxTODJed3JQTwQ7UW0wls5llWkXTWfsLzTiuv/cc/7/5ymqXVXC/U524zk7aLG/c+dBf4x5OXTpRX55p1kvODJginLaUTkuGk6//8cH1gz4Ml5W+3mEX/7DAB7rVlMFE/67NxvlQukhODPgyrffsqRuaV8fvuggXY+h4G16hO2fXIyfJWM3EOLlX3QvdxqlccfzwQP34Fhg9SeYgneBk/Tq2RKiOYJxl7/xA/kGWaVumBmt3c8LTm1OIm8mVkzvAXCaIld5rQl7y+arSzBAucLdeF+61GfgbdaWtZWRLzgLUbP6ciG+sGpXJzVSikYuf99Wp97IbLPUVPZpox28NnN1WPyeul+Y9ql8BMvlD+UEIoxpO8CJo/jbSTzxsjwvL4NnxuCGS8+VkbAJtin39JhzyTyFBdVbjZtvtg9tNbCz772KGxIYepfKlT4xD8xJc+0TeXHlBD4ZR6y524UA/g5ESuq40NKc6oePhxqIZ34GJ6S1OwcjN66828HD6wC/itMD+FdWvYGUGbEutj11SpQE49G5hv+ZzSgC75rj3bUMUu0noSehr80dC+jb7+5rNG37meeRhlw9unx08qAPTQNO+/BGlYevFZt/086rePUapwvjytT68BJcOLUMuzgWxnBeVj/yxtWOJkw6t3eakAyvJCReUQH5WdwP/xLyZws7m03ZEMvrmQwX7WVQT3Sh6r3FdG2TjqOYmvxJzYQkvctXODCgpLunJr2n7NXifOjwOuBeHBpGplnWSerK29rElzyMxfaHHlN/Klt7yXSL+N7kydB7zwx13uhWu1D/qA4mzvUVXoYypgsAv+bRuojRs+H10h+XiSBaWnkFIgP89ADw//sJYauMY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);">
     <div class="container">
-      <span class="eyebrow">Nuestro blog</span>
-      <h1>Consejos y guías para tu techo</h1>
-      <p>Notas y guías prácticas sobre techos, aislación y terminaciones, escritas por el equipo de El Gran Emporio de la Chapa.</p>
+      <a class="article-back" href="blog.html">← Volver al blog</a>
+      <span class="tag">Aislación</span>
+      <h1>Aislantes Térmicos para Techos: ¿Cuál Es el Mejor para Tu Vivienda?</h1>
+      <span class="article-date">26 de enero de 2025</span>
     </div>
   </section>
 
-  <!-- Blog list -->
-  <section class="blog-list">
+  <!-- Article body -->
+  <section class="article-wrap">
     <div class="container">
-      <div class="blog-grid">
-        <article class="blog-card">
-          <span class="tag">Techos</span>
-          <h2>Techos Completos en Madera: Guía para Construir con Durabilidad y Confort</h2>
-          <p>Todo lo que tenés que saber para elegir y construir un techo completo en madera: materiales, aislación y terminaciones que garantizan durabilidad y confort en tu obra.</p>
-          <div class="blog-meta">
-            <span class="blog-date">26 de enero de 2025</span>
-            <a class="blog-link" href="techos-completos-en-madera.html">Seguir leyendo →</a>
+      <div class="article-body">
+        <p>El calor en verano, el frío en invierno y el ruido de la lluvia son problemas que se resuelven desde la cubierta. Un buen aislante térmico para techo puede hacer la diferencia entre una vivienda confortable y una casa difícil de climatizar durante todo el año. Pero con tantas opciones en el mercado, ¿cómo elegir el que necesitás?</p>
+
+        <h2>Los 3 grandes grupos de aislantes para techos</h2>
+
+        <h3>1. Poliespuma con lámina de aluminio</h3>
+        <p>La poliespuma simple o doble aluminio es una de las opciones más populares del mercado. Se trata de espuma de polietileno con una o dos caras de aluminio, que combina dos mecanismos de aislación:</p>
+        <ul>
+          <li><strong>Aislamiento por radiación:</strong> la lámina de aluminio actúa como espejo, rechazando el calor exterior en verano y reteniendo el calor interior en invierno.</li>
+          <li><strong>Aislamiento por conducción:</strong> la espuma de polietileno bloquea la transferencia de calor gracias a su estructura de baja conductividad térmica.</li>
+        </ul>
+        <p>Además, es 100% impermeable, funciona como barrera de vapor, retarda la propagación de llamas y reduce considerablemente el ruido del granizo y la lluvia. Su instalación es sencilla: es liviana, no requiere herramientas especiales y muchos modelos incluyen solapa para facilitar la unión con cinta adhesiva.</p>
+        <p><strong>Ideal para:</strong> techos de chapa en viviendas unifamiliares, galpones, locales comerciales.</p>
+
+        <h3>2. Lana de vidrio (sola, con papel kraft o con aluminio)</h3>
+        <p>Fabricada a partir de arena y vidrio reciclado, la lana de vidrio ofrece un excelente desempeño térmico y acústico. Viene en rollos de aproximadamente 20 m² y en tres variantes según el uso:</p>
+        <div class="article-table-wrap">
+          <table>
+            <thead>
+              <tr><th>Tipo</th><th>Barrera de vapor</th><th>Protección humedad</th><th>Uso típico</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Lana de vidrio sola</td><td>No</td><td>Baja</td><td>Paredes interiores, cielorrasos sin vapor</td></tr>
+              <tr><td>Con papel kraft</td><td>Sí, básica</td><td>Moderada</td><td>Techos sobre machimbre</td></tr>
+              <tr><td>Con aluminio</td><td>Sí, alta eficiencia</td><td>Alta</td><td>Techos de chapa, paredes exteriores</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>La versión con aluminio es la más completa: previene la condensación, evita la formación de moho y mejora significativamente la eficiencia energética del hogar. El aluminio siempre debe instalarse orientado hacia el interior de la vivienda para funcionar correctamente.</p>
+        <p><strong>Ideal para:</strong> cubiertas de chapa o teja, paredes expuestas a grandes diferencias de temperatura.</p>
+
+        <h3>3. EPS (Poliestireno Expandido / Telgopor)</h3>
+        <p>El EPS está compuesto en un 98% de aire, lo que lo convierte en uno de los materiales más ligeros del mercado. Viene en densidades que van desde 8 hasta más de 30 kg/m³, y en formato de placas de 1 m × 1 m.</p>
+        <p>Sus características principales lo hacen muy versátil:</p>
+        <ul>
+          <li>Ligero y fácil de manipular</li>
+          <li>No absorbe humedad (no higroscópico)</li>
+          <li>No es sustrato nutritivo para hongos ni bacterias</li>
+          <li>Alta resistencia al impacto y la compresión en densidades superiores</li>
+        </ul>
+        <p>Al colocarlo en techo, las alfajías deben estar separadas exactamente cada 1 m de filo a filo, para que las placas encajen a presión y no se desplacen con el viento.</p>
+        <p><strong>Ideal para:</strong> techos planos, cubiertas con pendiente leve, proyectos con presupuesto ajustado.</p>
+
+        <h2>¿Cuál aislante te conviene?</h2>
+        <p>La respuesta depende del clima de tu zona, el tipo de cubierta y tu presupuesto. Si vivís en una región con veranos muy calurosos e inviernos fríos, la lana de vidrio con aluminio o la poliespuma doble aluminio son las opciones más completas. Si buscás algo económico y fácil de instalar, el EPS es una excelente alternativa.</p>
+        <p>¿No sabés cuál elegir? Consultá con nuestro equipo y te asesoramos según las características de tu obra. Contamos con stock permanente de todos los tipos de aislantes.</p>
+
+        <div class="article-cta">
+          <h3>¿Necesitás asesoramiento para elegir tu aislante?</h3>
+          <p>Contanos qué tipo de techo tenés y te recomendamos la mejor opción para tu obra.</p>
+          <div class="row-btns">
+            <a href="index.html#quote" class="btn btn-primary">¡Quiero un presupuesto!</a>
+            <a href="https://wa.me/5491135953630" target="_blank" rel="noopener" class="btn btn-whatsapp">WhatsApp</a>
           </div>
-        </article>
-        <article class="blog-card">
-          <span class="tag">Aislación</span>
-          <h2>Aislantes Térmicos para Techos: ¿Cuál Es el Mejor para Tu Vivienda?</h2>
-          <p>Comparamos los principales aislantes térmicos para techos y te contamos cuál conviene según el tipo de vivienda, el clima y el presupuesto de tu proyecto.</p>
-          <div class="blog-meta">
-            <span class="blog-date">26 de enero de 2025</span>
-            <a class="blog-link" href="aislantes-termicos-para-techos.html">Seguir leyendo →</a>
-          </div>
-        </article>
-        <article class="blog-card">
-          <span class="tag">Zinguería</span>
-          <h2>Zinguería para Techos: Cierres, Sellados y Terminaciones que Protegen Tu Hogar</h2>
-          <p>La zinguería es clave para evitar filtraciones y prolongar la vida útil de tu techo. Te contamos qué piezas necesitás y cómo elegir la terminación correcta.</p>
-          <div class="blog-meta">
-            <span class="blog-date">26 de enero de 2025</span>
-            <a class="blog-link" href="zingueria-para-techos.html">Seguir leyendo →</a>
-          </div>
-        </article>
+        </div>
       </div>
     </div>
   </section>
