@@ -284,11 +284,14 @@
   .quote-form h3{color:var(--navy); font-size:1.2rem; margin-bottom:22px;}
   .field{margin-bottom:16px;}
   .field label{display:block; font-size:.82rem; font-weight:600; color:var(--navy); margin-bottom:6px;}
-  .field select, .field input{
+  .field select, .field input, .field textarea{
     width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid #e1e3e8; font-family:inherit;
     font-size:.92rem; color:var(--text); background:#fbfbfc; transition:border-color .2s ease;
   }
-  .field select:focus, .field input:focus{outline:none; border-color:var(--red);}
+  .field textarea{resize:vertical; min-height:84px;}
+  .field select:focus, .field input:focus, .field textarea:focus{outline:none; border-color:var(--red);}
+  .field-row{display:flex; gap:12px; flex-wrap:wrap;}
+  .field-row .field{flex:1 1 130px; margin-bottom:16px;}
   .quote-form .btn{width:100%; margin-top:6px;}
   .form-note{font-size:.72rem; color:#888; margin-top:12px; text-align:center;}
   .form-success{
@@ -683,9 +686,13 @@
         <h3>Asesoramiento gratuito</h3>
         <form id="quoteForm">
           <div class="field">
-            <label for="tipoTecho">Selecciona el tipo de techo</label>
+            <label for="nombreCompleto">Nombre y apellido</label>
+            <input id="nombreCompleto" type="text" placeholder="Ej: Juan García" required>
+          </div>
+          <div class="field">
+            <label for="tipoTecho">Tipo de techo</label>
             <select id="tipoTecho" required>
-              <option value="">Elegí una opción</option>
+              <option value="">Seleccioná el sistema</option>
               <option>Chapa y Madera</option>
               <option>Chapa y Perfiles</option>
               <option>Policarbonato y Estructurales</option>
@@ -694,25 +701,37 @@
               <option>Otros productos</option>
             </select>
           </div>
-          <div class="field">
-            <label for="zonaEnvio">Zona de envío</label>
-            <select id="zonaEnvio" required>
-              <option value="">Elegí tu zona</option>
-              <option>Zona 0: Fcio. Varela</option>
-              <option>Zona 1: Villa Brown, Alpino, La Capilla</option>
-              <option>Zona 2: Ing. Allan, El Pato, Gutiérrez, Hudson, Berazategui, Ezpeleta, Quilmes, Solano, Adrogué, Burzaco</option>
-              <option>Zona 3: Bernal, Wilde, Sarandí, Avellaneda, Lanús, Bandfield, Temperley, Lomas de Zamora, José Mármol, Lavallol, Monte Grande, Longchamps, Guernica, Glew, Canning, San Vicente, Ezeiza</option>
-              <option>Otra zona</option>
-            </select>
+          <div class="field-row">
+            <div class="field">
+              <label for="ancho">Ancho (m)</label>
+              <input id="ancho" type="number" step="0.01" min="0" placeholder="Ej: 8">
+            </div>
+            <div class="field">
+              <label for="largo">Largo (m)</label>
+              <input id="largo" type="number" step="0.01" min="0" placeholder="Ej: 10">
+            </div>
+            <div class="field">
+              <label for="zonaEnvio">Zona de envío</label>
+              <select id="zonaEnvio" required>
+                <option value="">Tu zona</option>
+                <option>Zona 0: Fcio. Varela</option>
+                <option>Zona 1: Villa Brown, Alpino, La Capilla</option>
+                <option>Zona 2: Ing. Allan, El Pato, Gutiérrez, Hudson, Berazategui, Ezpeleta, Quilmes, Solano, Adrogué, Burzaco</option>
+                <option>Zona 3: Bernal, Wilde, Sarandí, Avellaneda, Lanús, Bandfield, Temperley, Lomas de Zamora, José Mármol, Lavallol, Monte Grande, Longchamps, Guernica, Glew, Canning, San Vicente, Ezeiza</option>
+                <option>Otra zona</option>
+              </select>
+            </div>
           </div>
           <div class="field">
-            <label for="nombre">Nombre y contacto</label>
-            <input id="nombre" type="text" placeholder="Nombre y WhatsApp">
+            <label for="descripcion">Descripción del proyecto</label>
+            <textarea id="descripcion" rows="3" placeholder="Contanos más sobre tu obra, materiales que necesites, consultas..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Quiero mi presupuesto</button>
+          <button type="submit" class="btn btn-whatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.7 17.4L2 22l4.7-1.6a11 11 0 1013.8-16.9zM12 20a9 9 0 01-4.6-1.3l-.3-.2-3 1 1-2.9-.2-.3A9 9 0 1112 20zm5-6.7c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1a7.4 7.4 0 01-2.2-1.3 8.1 8.1 0 01-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.2-.5s0-.4-.1-.5c-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.3-.1-.1-.3-.2-.5-.3z"/></svg>
+            Pedir presupuesto por WhatsApp
+          </button>
         </form>
-        <p class="form-success" id="formSuccess">¡Gracias! Un asesor se va a comunicar con vos a la brevedad.</p>
-        <p class="form-note">Asesoramiento gratuito, sin compromiso.</p>
+        <p class="form-note">Te respondemos en menos de 24 hs en horario comercial.</p>
       </div>
     </div>
   </section>
@@ -884,10 +903,23 @@
     navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
   });
 
-  // Quote form (front-end only mockup)
+  // Quote form -> sends the request via WhatsApp
   document.getElementById('quoteForm').addEventListener('submit', function(e){
     e.preventDefault();
-    document.getElementById('formSuccess').style.display = 'block';
+    var nombre = document.getElementById('nombreCompleto').value.trim();
+    var tipo = document.getElementById('tipoTecho').value;
+    var ancho = document.getElementById('ancho').value.trim();
+    var largo = document.getElementById('largo').value.trim();
+    var zona = document.getElementById('zonaEnvio').value;
+    var descripcion = document.getElementById('descripcion').value.trim();
+    var msg = 'Hola! Quiero pedir un presupuesto.';
+    if (nombre) msg += '\nNombre: ' + nombre;
+    if (tipo) msg += '\nTipo de techo: ' + tipo;
+    if (ancho) msg += '\nAncho: ' + ancho + ' m';
+    if (largo) msg += '\nLargo: ' + largo + ' m';
+    if (zona) msg += '\nZona de envío: ' + zona;
+    if (descripcion) msg += '\nDescripción: ' + descripcion;
+    window.open('https://wa.me/5491135953630?text=' + encodeURIComponent(msg), '_blank');
     this.reset();
   });
 </script>
