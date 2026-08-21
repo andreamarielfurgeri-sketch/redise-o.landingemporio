@@ -345,6 +345,12 @@
   .footer-bottom a{color:rgba(255,255,255,.55);}
   .footer-bottom a:hover{color:#fff;}
   .footer-legal{display:flex; gap:18px;}
+  .footer-credit{
+    text-align:center; padding:14px 0; font-size:.72rem; color:rgba(255,255,255,.4);
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .footer-credit a{color:rgba(255,255,255,.55); text-decoration:none;}
+  .footer-credit a:hover{color:#fff;}
 
   /* ---------- Floating WhatsApp ---------- */
   .fab-whatsapp{
@@ -475,9 +481,8 @@
       <nav class="links" id="navLinks">
         <a href="#inicio" class="active">Inicio</a>
         <a href="#quienes-somos">Quienes somos</a>
-        <a href="#tienda">Tienda</a>
         <a href="#zonas">Zonas de envío</a>
-        <a href="#blog">Blog</a>
+        <a href="blog.html">Blog</a>
         <a href="#contacto">Contacto</a>
       </nav>
       <div class="nav-cta">
@@ -502,7 +507,7 @@
           <p>Elegí tu sistema de techo y pagalo como más te convenga, con todas las tarjetas.</p>
           <div class="row-btns">
             <a href="#quote" class="btn btn-primary">¡Quiero un presupuesto!</a>
-            <a href="#tienda" class="btn btn-outline">Ver catálogo</a>
+            <a href="#soluciones" class="btn btn-outline">Ver catálogo</a>
           </div>
         </div>
       </div>
@@ -540,7 +545,7 @@
   </section>
 
   <!-- Soluciones -->
-  <section class="solutions">
+  <section class="solutions" id="soluciones">
     <div class="container">
       <h2>SOLUCIONES PARA TU TECHO</h2>
       <p class="lead">Elegí el sistema que necesitás y te cotizamos todo completo en minutos.</p>
@@ -576,17 +581,6 @@
           <a href="#quote" class="btn btn-primary btn-sm">Cotizar</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Catalogo -->
-  <section class="catalog" id="tienda">
-    <div class="container">
-      <span class="eyebrow">Nuestro catálogo</span>
-      <div class="chevrons light"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>
-      <h2>TODO PARA TU TECHO, EN UN SOLO LUGAR</h2>
-      <p>Visitá nuestra tienda y conocé todos los materiales para techos: chapas, perfiles, aislantes, cielorrasos de PVC y accesorios. Encontrá precios actualizados y explorá todas las opciones disponibles para tu obra.</p>
-      <a href="#tienda" class="btn btn-primary">VISITA NUESTRA TIENDA</a>
     </div>
   </section>
 
@@ -824,10 +818,9 @@
       <div class="col">
         <h5>Navegación</h5>
         <a href="#inicio">Inicio</a>
-        <a href="#tienda">Tienda</a>
         <a href="#quienes-somos">Quiénes somos</a>
         <a href="#zonas">Zonas de envío</a>
-        <a href="#blog">Blog</a>
+        <a href="blog.html">Blog</a>
         <a href="#contacto">Contacto</a>
       </div>
       <div class="col">
@@ -857,6 +850,9 @@
         <a href="#">Política de privacidad</a>
         <a href="#">Términos y condiciones</a>
       </div>
+    </div>
+    <div class="footer-credit">
+      BRANDING Y DISEÑO WEB DESARROLLADO POR: <a href="https://andreafurgeri.com" target="_blank" rel="noopener">ANDREA FURGERI — andreafurgeri.com</a>
     </div>
   </footer>
 
@@ -912,7 +908,7 @@
   document.getElementById('tNext').addEventListener('click', () => track.scrollBy({left:340, behavior:'smooth'}));
 
   // Nav active state on scroll
-  const sections = ['inicio','quienes-somos','tienda','zonas','contacto'].map(id => document.getElementById(id)).filter(Boolean);
+  const sections = ['inicio','quienes-somos','zonas','contacto'].map(id => document.getElementById(id)).filter(Boolean);
   const navA = document.querySelectorAll('nav.links a');
   window.addEventListener('scroll', () => {
     let current = sections[0]?.id;
