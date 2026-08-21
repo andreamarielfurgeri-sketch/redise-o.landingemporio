@@ -292,6 +292,28 @@
   .field select:focus, .field input:focus, .field textarea:focus{outline:none; border-color:var(--red);}
   .field-row{display:flex; gap:12px; flex-wrap:wrap;}
   .field-row .field{flex:1 1 130px; margin-bottom:16px;}
+  .custom-select{position:relative;}
+  .custom-select-trigger{
+    width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid #e1e3e8; font-family:inherit;
+    font-size:.92rem; color:var(--text); background:#fbfbfc; transition:border-color .2s ease;
+    display:flex; align-items:center; justify-content:space-between; gap:8px; cursor:pointer; text-align:left;
+  }
+  .custom-select-trigger .custom-select-value{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1;}
+  .custom-select-trigger .custom-select-arrow{flex-shrink:0; color:var(--navy); transition:transform .2s ease;}
+  .custom-select.open .custom-select-trigger .custom-select-arrow{transform:rotate(180deg);}
+  .custom-select-trigger:focus{outline:none; border-color:var(--red);}
+  .custom-select.invalid .custom-select-trigger{border-color:var(--red);}
+  .custom-select-options{
+    position:absolute; top:calc(100% + 6px); left:0; width:100%; background:var(--white);
+    border:1.5px solid #e1e3e8; border-radius:10px; box-shadow:var(--shadow-lg);
+    list-style:none; margin:0; padding:6px; max-height:260px; overflow-y:auto; z-index:40;
+  }
+  .custom-select-options[hidden]{display:none;}
+  .custom-select-options li{
+    padding:9px 10px; border-radius:8px; font-size:.85rem; line-height:1.35; color:var(--text);
+    white-space:normal; word-wrap:break-word; cursor:pointer;
+  }
+  .custom-select-options li:hover, .custom-select-options li.active{background:#f2f4f8; color:var(--navy);}
   .quote-form .btn{width:100%; margin-top:6px;}
   .form-note{font-size:.72rem; color:#888; margin-top:12px; text-align:center;}
   .form-success{
@@ -711,15 +733,22 @@
               <input id="largo" type="number" step="0.01" min="0" placeholder="Ej: 10">
             </div>
             <div class="field">
-              <label for="zonaEnvio">Zona de envío</label>
-              <select id="zonaEnvio" required>
-                <option value="">Tu zona</option>
-                <option>Zona 0: Fcio. Varela</option>
-                <option>Zona 1: Villa Brown, Alpino, La Capilla</option>
-                <option>Zona 2: Ing. Allan, El Pato, Gutiérrez, Hudson, Berazategui, Ezpeleta, Quilmes, Solano, Adrogué, Burzaco</option>
-                <option>Zona 3: Bernal, Wilde, Sarandí, Avellaneda, Lanús, Bandfield, Temperley, Lomas de Zamora, José Mármol, Lavallol, Monte Grande, Longchamps, Guernica, Glew, Canning, San Vicente, Ezeiza</option>
-                <option>Otra zona</option>
-              </select>
+              <label for="zonaEnvioTrigger">Zona de envío</label>
+              <div class="custom-select" id="zonaEnvioWrap">
+                <button type="button" class="custom-select-trigger" id="zonaEnvioTrigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="custom-select-value" id="zonaEnvioValue">Tu zona</span>
+                  <svg class="custom-select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <ul class="custom-select-options" id="zonaEnvioOptions" role="listbox" hidden>
+                  <li role="option" data-value="">Tu zona</li>
+                  <li role="option" data-value="Zona 0: Fcio. Varela">Zona 0: Fcio. Varela</li>
+                  <li role="option" data-value="Zona 1: Villa Brown, Alpino, La Capilla">Zona 1: Villa Brown, Alpino, La Capilla</li>
+                  <li role="option" data-value="Zona 2: Ing. Allan, El Pato, Gutiérrez, Hudson, Berazategui, Ezpeleta, Quilmes, Solano, Adrogué, Burzaco">Zona 2: Ing. Allan, El Pato, Gutiérrez, Hudson, Berazategui, Ezpeleta, Quilmes, Solano, Adrogué, Burzaco</li>
+                  <li role="option" data-value="Zona 3: Bernal, Wilde, Sarandí, Avellaneda, Lanús, Bandfield, Temperley, Lomas de Zamora, José Mármol, Lavallol, Monte Grande, Longchamps, Guernica, Glew, Canning, San Vicente, Ezeiza">Zona 3: Bernal, Wilde, Sarandí, Avellaneda, Lanús, Bandfield, Temperley, Lomas de Zamora, José Mármol, Lavallol, Monte Grande, Longchamps, Guernica, Glew, Canning, San Vicente, Ezeiza</li>
+                  <li role="option" data-value="Otra zona">Otra zona</li>
+                </ul>
+                <input type="hidden" id="zonaEnvio" value="">
+              </div>
             </div>
           </div>
           <div class="field">
@@ -903,6 +932,54 @@
     navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
   });
 
+  // Custom "Zona de envío" dropdown (keeps the popup the same width as the field,
+  // wrapping long zone text instead of stretching the box like a native <select> does)
+  (function(){
+    var wrap = document.getElementById('zonaEnvioWrap');
+    var trigger = document.getElementById('zonaEnvioTrigger');
+    var valueEl = document.getElementById('zonaEnvioValue');
+    var optionsList = document.getElementById('zonaEnvioOptions');
+    var hiddenInput = document.getElementById('zonaEnvio');
+    var defaultText = valueEl.textContent;
+
+    function closeDropdown(){
+      wrap.classList.remove('open');
+      optionsList.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+    function openDropdown(){
+      wrap.classList.add('open');
+      optionsList.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (optionsList.hidden) openDropdown(); else closeDropdown();
+    });
+    optionsList.querySelectorAll('li').forEach(function(li){
+      li.addEventListener('click', function(){
+        hiddenInput.value = li.getAttribute('data-value');
+        valueEl.textContent = li.textContent;
+        optionsList.querySelectorAll('li').forEach(function(o){ o.classList.remove('active'); });
+        li.classList.add('active');
+        wrap.classList.remove('invalid');
+        closeDropdown();
+      });
+    });
+    document.addEventListener('click', function(e){
+      if (!wrap.contains(e.target)) closeDropdown();
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') closeDropdown();
+    });
+    wrap.resetCustomSelect = function(){
+      hiddenInput.value = '';
+      valueEl.textContent = defaultText;
+      optionsList.querySelectorAll('li').forEach(function(o){ o.classList.remove('active'); });
+      wrap.classList.remove('invalid');
+    };
+  })();
+
   // Quote form -> sends the request via WhatsApp
   document.getElementById('quoteForm').addEventListener('submit', function(e){
     e.preventDefault();
@@ -912,6 +989,12 @@
     var largo = document.getElementById('largo').value.trim();
     var zona = document.getElementById('zonaEnvio').value;
     var descripcion = document.getElementById('descripcion').value.trim();
+    var zonaWrap = document.getElementById('zonaEnvioWrap');
+    if (!zona) {
+      zonaWrap.classList.add('invalid');
+      document.getElementById('zonaEnvioTrigger').focus();
+      return;
+    }
     var msg = 'Hola! Quiero pedir un presupuesto.';
     if (nombre) msg += '\nNombre: ' + nombre;
     if (tipo) msg += '\nTipo de techo: ' + tipo;
@@ -921,6 +1004,7 @@
     if (descripcion) msg += '\nDescripción: ' + descripcion;
     window.open('https://wa.me/5491135953630?text=' + encodeURIComponent(msg), '_blank');
     this.reset();
+    if (zonaWrap.resetCustomSelect) zonaWrap.resetCustomSelect();
   });
 </script>
 <script>
