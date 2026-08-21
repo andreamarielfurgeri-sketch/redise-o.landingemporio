@@ -623,5 +623,16 @@
   menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 </script>
+<script>
+  (function (d, w, s) {
+    var gs = d.createElement(s), fs = d.getElementsByTagName(s)[0];
+    gs.src = 'https://gso.kommo.com/js/button.js';
+    gs.async = true;
+    gs.id = 'crm_plugin_script';
+    gs.charset = 'utf-8';
+    w.crm_plugin = { id: 1075557, hash: 'c42a11ac53884e955f44a183d4dc07b05ec71177b2ebe9155caa269ba2453164', locale: 'es', inline: false, setMeta: function (p) { this.params = (this.params || []).concat([p]); } };
+    fs.parentNode.insertBefore(gs, fs);
+  })(document, window, 'script');
+</script>
 </body>
 </html>
