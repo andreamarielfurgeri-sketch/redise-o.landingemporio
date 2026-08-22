@@ -7,6 +7,14 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Google Ads: etiqueta global del sitio -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16866920778"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-16866920778');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -1002,9 +1010,27 @@
     if (largo) msg += '\nLargo: ' + largo + ' m';
     if (zona) msg += '\nZona de envío: ' + zona;
     if (descripcion) msg += '\nDescripción: ' + descripcion;
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {'send_to': 'AW-16866920778/0BjCCMizyacaEMqS4-o-'});
+    }
     window.open('https://wa.me/5491135953630?text=' + encodeURIComponent(msg), '_blank');
     this.reset();
     if (zonaWrap.resetCustomSelect) zonaWrap.resetCustomSelect();
+  });
+
+  // Google Ads: conversión "Contacto" en todos los botones de WhatsApp y el teléfono
+  // (fuera del formulario de presupuesto, que ya dispara su propia conversión arriba)
+  document.querySelectorAll('a[href^="https://wa.me/"], a[href^="tel:"]').forEach(function (link) {
+    if (link.closest('#quoteForm')) return;
+    link.addEventListener('click', function () {
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-16866920778/yYm_CLn-7YwcEMqS4-o-',
+          'value': 1.0,
+          'currency': 'ARS'
+        });
+      }
+    });
   });
 </script>
 <script>
