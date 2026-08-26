@@ -220,7 +220,7 @@
   .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
   .about-visual{
     background:linear-gradient(150deg,var(--navy),var(--navy-2));
-    border-radius:22px; min-height:380px; position:relative; overflow:visible;
+    border-radius:22px; min-height:440px; position:relative; overflow:visible;
     display:flex; align-items:center; justify-content:center;
   }
   .about-visual .badge{
@@ -231,22 +231,17 @@
   .about-visual .badge span{font-size:.72rem; color:#666; text-align:center; letter-spacing:.04em; text-transform:uppercase;}
   .about-visual .badge.b1{top:38px; left:32px;}
   .about-visual .badge.b2{bottom:38px; right:32px;}
-  .photo-stack{position:relative; width:100%; height:100%; min-height:340px;}
+  .photo-stack{position:relative; width:100%; height:100%; min-height:400px;}
   .polaroid{
-    position:absolute; background:var(--white); padding:10px 10px 30px; border-radius:5px;
+    position:absolute; background:var(--white); padding:8px; border-radius:5px;
     box-shadow:0 16px 34px rgba(0,0,0,.35);
   }
   .polaroid img{display:block; width:100%; height:100%; object-fit:cover; border-radius:2px;}
-  .polaroid-caption{
-    position:absolute; left:2px; right:2px; bottom:2px; text-align:center;
-    font-family:'Caveat', cursive; font-weight:700; font-size:1rem; color:#333; line-height:1.1;
-    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-  }
-  .polaroid-main{width:54%; max-width:225px; aspect-ratio:4/3; left:50%; top:46%; transform:translate(-50%,-50%) rotate(-3deg); z-index:3;}
+  .polaroid-main{width:68%; max-width:290px; aspect-ratio:4/3; left:50%; top:48%; transform:translate(-50%,-50%) rotate(-3deg); z-index:3;}
   .polaroid-main img{aspect-ratio:4/3;}
-  .polaroid-2{width:32%; max-width:145px; aspect-ratio:4/3; left:18%; top:80%; transform:translate(-50%,-50%) rotate(-8deg); z-index:4;}
+  .polaroid-2{width:44%; max-width:200px; aspect-ratio:4/3; left:20%; top:83%; transform:translate(-50%,-50%) rotate(-8deg); z-index:4;}
   .polaroid-2 img{aspect-ratio:4/3;}
-  .polaroid-3{width:30%; max-width:130px; aspect-ratio:4/3; left:84%; top:18%; transform:translate(-50%,-50%) rotate(8deg); z-index:2;}
+  .polaroid-3{width:42%; max-width:185px; aspect-ratio:4/3; left:83%; top:19%; transform:translate(-50%,-50%) rotate(8deg); z-index:2;}
   .polaroid-3 img{aspect-ratio:4/3;}
   .about h2{color:var(--navy); font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:18px;}
   .about p{color:#4a4f57; margin-bottom:16px; font-size:.98rem;}
@@ -261,8 +256,9 @@
   .about-strip-item{position:relative; border-radius:14px; overflow:hidden; box-shadow:var(--shadow-lg); aspect-ratio:16/9;}
   .about-strip-item img{width:100%; height:100%; object-fit:cover; display:block;}
   .about-strip-item span{
-    position:absolute; left:0; right:0; bottom:0; padding:16px 18px 12px; color:var(--white);
-    font-size:.85rem; font-weight:700; background:linear-gradient(0deg, rgba(13,42,115,.88), rgba(13,42,115,0));
+    position:absolute; left:0; right:0; bottom:0; padding:20px 20px 16px; color:var(--white);
+    font-family:'Poppins', sans-serif; font-size:1.15rem; font-weight:800; line-height:1.25;
+    background:linear-gradient(0deg, rgba(13,42,115,.92), rgba(13,42,115,0));
   }
 
   /* ---------- Beneficios ---------- */
@@ -509,7 +505,7 @@
     .cards-grid{grid-template-columns:repeat(2,1fr);}
     .benefits-grid{grid-template-columns:repeat(2,1fr);}
     .about-grid, .quote-grid{grid-template-columns:1fr; gap:36px;}
-    .about-visual{min-height:320px;}
+    .about-visual{min-height:380px;}
     .footer-grid{grid-template-columns:1fr 1fr; row-gap:36px;}
     .zonas-detalle-grid{grid-template-columns:1fr; gap:24px;}
     .zonas-map-wrap{aspect-ratio:1/1;}
@@ -539,13 +535,12 @@
     .hero-slide .hero-bg.show{background-size:contain; background-position:top center; background-repeat:no-repeat;}
     .hero-slide .hero-bg.show::after{background:linear-gradient(180deg, rgba(13,42,115,.1) 0%, rgba(13,42,115,.78) 42%, rgba(13,42,115,.93) 100%);}
     .hero-slide-promo .hero-mascot-inline{display:none;}
-    .photo-stack{min-height:300px;}
-    .polaroid-main{max-width:190px;}
-    .polaroid-2{max-width:120px;}
-    .polaroid-3{max-width:112px;}
-    .polaroid-caption{font-size:.92rem;}
+    .photo-stack{min-height:340px;}
+    .polaroid-main{max-width:230px;}
+    .polaroid-2{max-width:155px;}
+    .polaroid-3{max-width:145px;}
     .about-strip{gap:14px;}
-    .about-strip-item span{font-size:.78rem; padding:12px 14px 10px;}
+    .about-strip-item span{font-size:.95rem; padding:14px 14px 10px;}
     .hero-arrow{top:auto; bottom:14px;}
     .hero-arrow.prev{left:8px;} .hero-arrow.next{right:8px;}
     .hero-dots{bottom:22px;}
@@ -721,11 +716,9 @@
           </div>
           <div class="polaroid polaroid-main">
             <img src="images/about-foto-local.webp" alt="Local de El Gran Emporio de la Chapa" loading="lazy">
-            <span class="polaroid-caption">Nuestro local en Zona Sur</span>
           </div>
           <div class="polaroid polaroid-2">
             <img src="images/about-foto-generacion.webp" alt="Segunda generación al frente de El Gran Emporio de la Chapa" loading="lazy">
-            <span class="polaroid-caption">2ª generación</span>
           </div>
         </div>
         <div class="badge b1"><strong>+40</strong><span>Años de trayectoria</span></div>
