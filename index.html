@@ -126,12 +126,11 @@
     display:flex; align-items:center;
   }
   .hero-slide.active{opacity:1;}
-  .hero-slide .hero-bg{
-    position:absolute; inset:0; z-index:0;
-  }
-  .hero-slide:nth-child(1) .hero-bg{background:radial-gradient(circle at 80% 20%, #1d4fb0 0%, var(--navy) 55%), linear-gradient(120deg,var(--navy),var(--navy-2));}
-  .hero-slide:nth-child(2) .hero-bg{background:radial-gradient(circle at 15% 80%, #0a1a4a 0%, var(--navy) 55%), linear-gradient(120deg,var(--navy-2),var(--navy));}
-  .hero-slide:nth-child(3) .hero-bg{background:radial-gradient(circle at 85% 75%, #6e231c 0%, var(--navy) 55%), linear-gradient(120deg,var(--navy),var(--red-dark) 160%);}
+  .hero-slide .hero-bg{display:none;}
+  .hero-video-bg{position:absolute; inset:0; z-index:0; overflow:hidden; background:var(--navy);}
+  .hero-video{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-width:100%; min-height:100%; width:auto; height:auto; object-fit:cover;}
+  .hero-video-mobile{display:none;}
+  .hero-video-overlay{position:absolute; inset:0; background:linear-gradient(90deg, rgba(13,42,115,.82) 0%, rgba(13,42,115,.55) 48%, rgba(13,42,115,.25) 100%);}
   .hero-shape{
     position:absolute; right:-40px; top:50%; transform:translateY(-50%); z-index:0; opacity:.5;
     width:min(46vw,420px); height:min(46vw,420px);
@@ -429,6 +428,9 @@
     .hero-content .tag{margin-left:auto; margin-right:auto;}
     .hero-content h2, .hero-content p{max-width:100%; margin-left:auto; margin-right:auto;}
     .hero-content .row-btns{justify-content:center;}
+    .hero-video-desktop{display:none;}
+    .hero-video-mobile{display:block;}
+    .hero-video-overlay{background:linear-gradient(180deg, rgba(13,42,115,.55) 0%, rgba(13,42,115,.75) 55%, rgba(13,42,115,.88) 100%);}
     .about-visual img{width:150px !important; height:150px !important; opacity:.18 !important;}
     .hero-arrow{top:auto; bottom:14px;}
     .hero-arrow.prev{left:8px;} .hero-arrow.next{right:8px;}
@@ -499,6 +501,15 @@
   <!-- Hero -->
   <section class="hero" id="inicio">
     <div class="hero-slides" id="heroSlides">
+      <div class="hero-video-bg">
+        <video class="hero-video hero-video-desktop" autoplay muted loop playsinline preload="auto" poster="videos/hero-horizontal-poster.jpg">
+          <source src="videos/hero-horizontal.mp4" type="video/mp4">
+        </video>
+        <video class="hero-video hero-video-mobile" autoplay muted loop playsinline preload="auto" poster="videos/hero-mobile-poster.jpg">
+          <source src="videos/hero-mobile.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
       <div class="hero-slide active">
         <div class="hero-bg"></div>
         <div class="hero-content">
